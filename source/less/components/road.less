@@ -1,0 +1,38 @@
+
+.road {
+    position: absolute;
+    display: block;
+    background-color: @color-road;
+    width: @road-width;
+    height: @grid-size;
+    //transform: rotateZ(45deg);
+    top: 0px;
+    left: @road-center;
+    //z-index: -998;
+}
+
+.road:after {
+    position: absolute;
+    display: block;
+    content: '';
+    background-color: @color-road;
+    width: @road-width;
+    height: @grid-size;
+    transform: rotateZ(90deg);
+    top: 0;
+    left: 0;
+    //z-index: -998;
+}
+
+.road.___roundabout:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: @grid-size/2;
+    height: @grid-size/2;
+    background-color: @color-grass;
+    border: solid @color-road @road-width/1.2;
+    border-radius: 50%;
+    top: ( @plotsize / 2 ) + ( @road-width / 4 );
+    left: ( -@plotsize / 2 ) + ( @road-width / 4 );
+}

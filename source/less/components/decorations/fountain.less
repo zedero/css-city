@@ -1,0 +1,85 @@
+.fountain {
+    @l: 4rem;
+    @b: 6rem;
+    @br: 10%;
+    @c: lighten(#b76538, 5%);
+    
+    position: absolute;
+    width: @b;
+    height: @l;
+    //z-index: 998;
+    top: (@plotsize / 2)-(@l / 2);
+    left: (@plotsize / 2)-(@b / 2);
+    
+    .water {
+        position: absolute;
+        background-color: @color-water;
+        width: 100%;
+        height: 100%;
+        border-radius: @br;
+    }
+    .water__effect {
+        transform: rotate(-45deg);
+        top: 3rem;
+        left: .75rem;
+        position: relative;
+    }
+    .water__splash {
+        position: absolute;
+        background-color: lighten(@color-water,30%);
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 4px;
+        opacity: 0.4;
+        //z-index: 999;
+        animation: water-drops 2s ease infinite;
+        bottom: 2rem;
+        left: 2rem;
+        transform-origin: center right;
+        animation-delay: .5s;
+    }
+    .water__splash:nth-child(2) {
+        left: 2.5rem;
+        bottom: 1.5rem;
+        animation-delay: .25s;
+    }
+    .water__splash:nth-child(3) {
+        left: 3rem;
+        bottom: 1rem;
+        animation-delay: 0s;
+    }
+    
+    .water__splash:nth-child(4) {
+        left: 3.5rem;
+        bottom: .5rem;
+        animation-delay: .25s;
+    }
+    
+    .water__splash:nth-child(5) {
+        left: 4rem;
+        bottom: 0rem;
+        animation-delay: .5s;
+    }
+    @keyframes water-drops {
+    0% {
+        height: 0rem;
+        //border-radius: 3px;
+    }
+    50% {
+        height: 2rem;
+    }
+    100% {
+        height: 0rem;
+    }
+}
+    
+    .grass {
+        position: absolute;//display: none;
+        width: @plotsize;
+        height: @plotsize;
+        background-color: @color-grass;
+        top: -(@plotsize - @l)/2;
+        left: -(@plotsize - @b)/2;
+        //z-index: -1;
+    }
+}

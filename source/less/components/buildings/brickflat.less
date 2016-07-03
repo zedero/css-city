@@ -1,0 +1,238 @@
+/***************************************************************/
+/*********************** appartment ***************************/
+/***************************************************************/
+
+
+/* Start example building*/
+
+.brickflat {
+    @h: 4.2rem;
+    @floors: @h - 1rem;
+    @l: 6rem;
+    @b: 6rem;
+    @sun: 0rem;
+    @roof-border: .4rem;
+    @c: lighten(#b76538, 5%);
+    .box-shadow(@x, @y, @index) when (@index > 0) {
+        .box-shadow(@x, @y, @index - 1);
+        box-shadow+: @x*@index @y*@index 0 0 black;
+    }
+    position: absolute;
+    width: @b;
+    height: @l;
+    background-color: transparent;
+    //z-index: 998;
+    top: (@plotsize / 2)-(@l / 2);
+    left: (@plotsize / 2)-(@b / 2);
+    .grass {
+        position: absolute;
+        width: @plotsize;
+        height: @plotsize;
+        //background-color: @color-grass;
+        top: -(@plotsize - @l)/2;
+        left: -(@plotsize - @b)/2;
+    }
+    .driveway {
+        width: @road-width/2;
+        height: @plotsize;
+        position: absolute;
+        display: block;
+        background-color: dimgrey;
+        left: (@plotsize/3)-(@road-width/4);
+        top: -(@plotsize - @l)/2;
+    }
+    .wall {
+        width: @b;
+        height: @h;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: lighten(@c, 5%);
+        transform: skewX(45deg);
+        left: -@h/2;
+        top: @l - @h;
+        //z-index: 999;
+        .windows {
+            position: absolute;
+            display: block;
+            background-color: black;
+            opacity: 0.2;
+            width: .5rem;
+            height: .7rem;
+            overflow: hidden;
+            left: .5rem;
+            top: .5rem;
+            //.box-shadow(1rem,1rem,@floors)
+            box-shadow: 10px 0 0 0 black,
+              20px 0 0 0 black,
+              30px 0 0 0 black,
+              40px 0 0 0 black,
+              0px 10px 0 0 black,
+              10px 10px 0 0 black,
+              20px 10px 0 0 black,
+              30px 10px 0 0 black,
+              40px 10px 0 0 black,
+              0px 20px 0 0 black,
+              10px 20px 0 0 black,
+              20px 20px 0 0 black,
+              30px 20px 0 0 black,
+              40px 20px 0 0 black,
+              0px 30px 0 0 black,
+              10px 30px 0 0 black,
+              20px 30px 0 0 black,
+              30px 30px 0 0 black,
+              40px 30px 0 0 black;
+        }
+    }
+    .wall:nth-child(2) {
+        width: @h ;
+        height: @l;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: darken(@c, 5%);
+        transform: skewY(45deg);
+        left: @b - @h;
+        top: -@h/2;
+        //z-index: 999;
+        .windows {
+            position: absolute;
+            display: block;
+            background-color: black;
+            opacity: 0.2;
+            width: .7rem;
+            height: .5rem;
+            overflow: hidden;
+            box-shadow:   0 10px 0 0 black,
+                            0 20px 0 0 black,
+                              0 30px 0 0 black,
+                              0 40px 0 0 black,
+                              10px 0px 0 0 black,
+                              10px 10px 0 0 black,
+                              10px 20px 0 0 black,
+                              10px 30px 0 0 black,
+                              10px 40px 0 0 black,
+                              20px 0px 0 0 black,
+                              20px 10px 0 0 black,
+                              20px 20px 0 0 black,
+                              20px 30px 0 0 black,
+                              20px 40px 0 0 black,
+                              30px 0px 0 0 black,
+                              30px 10px 0 0 black,
+                              30px 20px 0 0 black,
+                              30px 30px 0 0 black,
+                              30px 40px 0 0 black;
+        }
+    }
+    .roof {
+        position: absolute;
+        width: @b;
+        height: @l;
+        background-color: #555;
+        box-shadow: inset 0 0 0 @roof-border #313131;
+        //z-index: 1001;
+        top: -@h;
+        left: -@h;
+    }
+    .vent {
+        position: absolute;
+        width: 1rem;
+        height: 2rem;
+        background-color: #393939;
+        //z-index: 1001;
+        top: @b/6;
+        left: @l/6;
+        
+        &:before {
+            position: absolute;
+            display: block;
+            content: ' ';
+            background-color: grey;
+            transform: skewY(45deg);
+            width: .3rem;
+            height: 2rem;
+            left: 1rem;
+            top: .15rem;
+        }
+        &:after {
+            position: absolute;
+            display: block;
+            content: ' ';
+            background-color: grey;
+            transform: skewX(45deg);
+            width: 1rem;
+            height: .3rem;
+            left: .15rem;
+            top: 2rem;
+        }
+    }
+    .vent:nth-child(2) {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        background-color: #393939;
+        //z-index: 1001;
+        top: @b/2;
+        left: @l/2;
+        
+        &:before {
+            position: absolute;
+            display: block;
+            content: ' ';
+            background-color: grey;
+            transform: skewY(45deg);
+            width: .1rem;
+            height: 1rem;
+            left: 1rem;
+            top: .1rem;
+        }
+        &:after {
+            position: absolute;
+            display: block;
+            content: ' ';
+            background-color: grey;
+            transform: skewX(45deg);
+            width: 1rem;
+            height: .1rem;
+            left: 0rem;
+            top: 1rem;
+        }
+    }
+    
+    &__shadow {
+        position: absolute;
+        width: @b;
+        height: @l;
+        background-color: transparent;
+        //z-index: -1;
+        top: (@plotsize / 2)-(@l / 2);
+        left: (@plotsize / 2)-(@b / 2);
+        &:before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: @b;
+            height: @h;
+            top: -@h;
+            left: @h/2;
+            transform: skewX(-45deg);
+            background-color: rgba(0, 0, 0, .2);
+            //z-index: -1;
+        }
+        &:after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: @h;
+            height: @l;
+            top: -@h/2;
+            left: @b;
+            transform: skewY(-45deg);
+            background-color: rgba(0, 0, 0, .2);
+            //z-index: -1;
+        }
+    }
+}
+
+
+/* End example building*/

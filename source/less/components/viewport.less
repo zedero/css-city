@@ -1,0 +1,11 @@
+
+
+.viewport {
+    position: relative;
+    top: 30%;
+    left: 30%;
+    & when (@rotate = true) {
+        transform: rotateZ(45deg);
+        top: 50rem;
+    }
+}

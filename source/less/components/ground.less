@@ -1,0 +1,33 @@
+.ground {
+    position: absolute;
+    display: block;
+    background-color: @color-ground;
+    width: @grid-size;
+    height: @grid-size;
+    //z-index:-999;
+}
+
+.ground:before{
+  position: absolute;
+  content: ' ';
+  display: block;
+  background-color: darken(@color-ground,10%);
+  width: @ground-height;
+  height: @grid-size;
+  top: @ground-offset;
+  right: -@ground-height;
+  //z-index:-998;
+  transform: skewY(45deg);
+}
+.ground:after{
+  content: '';
+  position: absolute;
+  display: block;
+  background-color: lighten(@color-ground,10%);
+  width: @grid-size;
+  height: @ground-height;
+  top: @grid-size;
+  right: -@ground-offset;
+  //z-index:-998;
+  transform: skewX(45deg);
+}

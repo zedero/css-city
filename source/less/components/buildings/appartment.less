@@ -1,0 +1,132 @@
+/***************************************************************/
+/*********************** appartment ***************************/
+/***************************************************************/
+
+
+/* Start example building*/
+
+.appartment {
+    @h: 15rem;
+    @floors: @h - 1rem;
+    @l: 6rem;
+    @b: 6rem;
+    @sun: 0rem;
+    @roof-border:.4rem;
+    @c: #7da1bf;
+    @c: #46837C;
+    @c: #deb887;
+    
+    .box-shadow(@x, @y, @index) when (@index > 0) {
+        .box-shadow(@x, @y, @index - 1);
+        box-shadow+: @x*@index @y*@index 0 0 black;
+    }
+    
+    position: absolute;
+    width: @b;
+    height: @l;
+    background-color: transparent;
+    //z-index: 998;
+    top: (@plotsize / 2)-(@l / 2);
+    left: (@plotsize / 2)-(@b / 2);
+    .grass {
+        position: absolute;
+        width: @plotsize;
+        height: @plotsize;
+        background-color: @color-grass;
+        top: -(@plotsize - @l)/2;
+        left: -(@plotsize - @b)/2;
+    }
+    .wall{
+        width: @b;
+        height: @h;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: lighten(@c,5%);
+        transform:  skewX(45deg);
+        left: -@h/2;
+        top: @l - @h;
+        //z-index: 999;
+        .windows {
+            position: absolute;
+            display: block;
+            background-color: black;
+            opacity: 0.2;
+            width: @b;
+            height: .25rem;
+            overflow: hidden;
+            .box-shadow(0,1rem,@floors)
+        }
+    }
+    
+    .wall:nth-child(2) {
+        width: @h;
+        height: @l;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: darken(@c,5%);
+        transform:  skewY(45deg);
+        left: @b - @h;
+        top: -@h/2;
+        //z-index: 999;
+        .windows {
+            position: absolute;
+            display: block;
+            background-color: black;
+            opacity: 0.2;
+            width: .25rem;
+            height: @l;
+            overflow: hidden;
+            .box-shadow(1rem,0,@floors)
+        }
+    }
+    
+    .roof {
+        position: absolute;
+        width: @b;
+        height: @l;
+        background-color: #555;
+        box-shadow: inset 0 0 0 @roof-border #313131;
+        //z-index: 1001;
+        top: -@h;
+        left: -@h;
+    }
+    
+    &__shadow {
+        position: absolute;
+        width: @b;
+        height: @l;
+        background-color: transparent;
+        //z-index: 998;
+        top: (@plotsize / 2)-(@l / 2);
+        left: (@plotsize / 2)-(@b / 2);
+
+        &:before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: @b;
+            height: @h;
+            top: -@h;
+            left: @h/2;
+            transform: skewX(-45deg);
+            background-color: rgba(0,0,0,.2);
+            //z-index: -1;
+        }
+        &:after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: @h;
+            height: @l;
+            top: -@h/2;
+            left: @b;
+            transform: skewY(-45deg);
+            background-color: rgba(0,0,0,.2);
+            //z-index: -1;
+        }
+    }
+}
+/* End example building*/
+

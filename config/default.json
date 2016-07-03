@@ -1,0 +1,13 @@
+{
+    "paths": {
+        "source": "source",
+        "test": "test",
+        "build": "dist",
+        "assets": {
+            "css": "assets/css",
+            "font": "assets/fonts",
+            "image": "assets/images",
+            "js": "assets/js"
+        }
+    }
+}

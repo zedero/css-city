@@ -1,0 +1,43 @@
+//
+// Variables
+// --------------------------------------------------
+@rotate: false;
+@rotate: true;
+
+@selector: false;
+@selector: true;
+
+// Breakpoints
+@screen-xs:                   320px;
+@screen-sm:                   680px;
+@screen-md:                   768px;
+@screen-lg:                   1024px;
+@screen-xl:                   1681px;
+
+// Max widths
+@screen-sm-max:               (@screen-md - 1);
+@screen-md-max:               (@screen-lg - 1);
+@screen-lg-max:               (@screen-xl - 1);
+
+// Grid
+@grid-columns:                12;
+@grid-gutter-width:           2rem;
+
+// Container sizes
+@container:                   (100.4rem + @grid-gutter-width);
+
+@grid-size: 20rem;
+@ground-height: @grid-size / 20;
+@ground-offset: @ground-height / 2;
+
+@road-width: 3rem;
+@road-center: ( @grid-size - @road-width ) / 2;
+@plotsize: ( @grid-size - @road-width ) / 2;
+
+
+@color-grass:   seagreen;
+@color-grass:   #488214;
+@color-sky:     skyblue;
+@color-road:    #989899;
+@color-ground:  #cac4ae;
+@color-water:   #40a4df;

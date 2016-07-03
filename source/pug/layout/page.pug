@@ -1,0 +1,26 @@
+block variables
+include ../buildings/buildings
+include ../decoration/decoration
+
+- var title = title ? ( title + ' - Website' ) : "Boilerplate";
+
+doctype html
+html
+    head
+        meta( charset="utf-8" )
+        meta( http-equiv="X-UA-Compatible" content="IE=edge" )
+
+        title=title
+
+        meta( name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" )
+
+        link( href=config.paths.assets.css+"/all.css" rel="stylesheet" type="text/css" )
+
+    body
+        .page-layout
+            
+
+            main.page-layout__main
+                block main
+
+            script( src=config.paths.assets.js+"/all.js" )

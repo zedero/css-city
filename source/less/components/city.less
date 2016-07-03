@@ -1,0 +1,106 @@
+.city {
+    
+}
+
+.emptyplot {
+    position: absolute;
+    width: @plotsize;
+    height: @plotsize;
+    background-color: transparent;
+    z-index: 1;
+}
+
+/* Start example building*/
+.box {
+    @h: 8rem;
+    @l: 5rem;
+    @b: 7rem;
+    @sun: 0rem;
+    @roof-border:.4rem;
+    @c: #deb887;
+    display: none;
+    position: absolute;
+    width: @b;
+    height: @l;
+    background-color: transparent;
+    background-color: @c;
+    //z-index: 999;
+    top: (@plotsize / 2)-(@l / 2);
+    left: (@plotsize / 2)-(@b / 2);
+    
+    &:before {
+        width: @b;
+        height: @h;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: lighten(@c,5%);
+        transform:  skewX(45deg);
+        left: -@h/2;
+        top: @l - @h;
+        //z-index: 999;
+    }
+    
+    &:after {
+        width: @h;
+        height: @l;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: darken(@c,5%);
+        transform:  skewY(45deg);
+        left: @b - @h;
+        top: -@h/2;
+        //z-index: 999;
+    }
+    
+    .roof {
+        position: absolute;
+        width: @b;
+        height: @l;
+        background-color: #555;
+        box-shadow: inset 0 0 0 @roof-border #313131;
+        //z-index: 999;
+        top: -@h;
+        left: -@h;
+    }
+    
+    &__shadow {
+        position: absolute;
+        width: @b;
+        height: @l;
+        background-color: red;
+        background-color: @c;
+        //z-index: 998;
+        top: (@plotsize / 2)-(@l / 2);
+        left: (@plotsize / 2)-(@b / 2);
+        display: none;
+
+        &:before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: @b;
+            height: @h;
+            top: -@h;
+            left: @h/2;
+            transform: skewX(-45deg);
+            background-color: rgba(0,0,0,.2);
+            //z-index: -10;
+        }
+        &:after {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: @h;
+            height: @l;
+            top: -@h/2;
+            left: @b;
+            transform: skewY(-45deg);
+            background-color: rgba(0,0,0,.2);
+            //z-index: -10;
+        }
+    }
+}
+/* End example building*/
+

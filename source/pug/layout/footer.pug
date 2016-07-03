@@ -1,0 +1,19 @@
+.footer
+    .container
+        .row
+            .col-sm-7
+                ul.footer__navigation
+                    li
+                        a.footer__link(href="/index.html" class=(menuActive === "home") ? "___active" : "") Home
+                    li.footer__spacer |
+                    li
+                        a.footer__link(href="/checklist.html" class=(menuActive === "checklist") ? "___active" : "") Feedback
+                    li.footer__spacer |
+                    li
+                        a.footer__link(href="/over-en-feedback.html" class=(menuActive === "over") ? "___active" : "") Over de VIB-check
+            .col-sm-5
+                ul.footer__info
+                    li
+                        a.footer__link(href="http://www.inspectieszw.nl/" target="_blank") » Inspectie SZW
+                    li
+                        a.footer__link(href="http://belastingdienst.nl" target="_blank") » Ministerie van Infrastructuur en Milieu
