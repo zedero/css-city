@@ -5,6 +5,7 @@
     position: absolute;
     animation: cars-spawning 2s linear;
     //z-index: @z-cars;
+    //display: none;
 }
 @keyframes cars-spawning {
     0% {
@@ -42,7 +43,7 @@
         height: @car-w;
         background-color: rgba(0,0,0,.2);
         top: 0rem;
-        left: @car-w/2;
+        left: @car-w/1.5;
     }
 }
 //===================================================
@@ -77,7 +78,7 @@
         border-radius: 50%;
         background-color: black;
         top: 0rem;
-        left: @car-h / 3;
+        left: @car-h / 2;
     }
 }
 .car.__police {
@@ -162,12 +163,14 @@
 
 .car.__two {
     animation: car-two 3s 1s linear infinite;
+    transform: rotate(180deg);
+    box-shadow: -2px -2px 0 0 #333;
 }
 
 .car.__three {
     animation: car-three 3s 1s linear infinite;
-    transform: rotate(90deg);
-    box-shadow: 2px -2px 0 0 #333;
+    transform: rotate(-90deg);
+    box-shadow: -2px 2px 0 0 #333;
 }
 
 .car.__four {

@@ -7,18 +7,19 @@
     height: @grid-size;
     top: 0px;
     left: @road-center;
-}
-
-.road:after {
-    position: absolute;
-    display: block;
-    content: '';
-    background-color: @color-road;
-    width: @road-width;
-    height: @grid-size;
-    transform: rotateZ(90deg);
-    top: 0;
-    left: 0;
+    
+    &:after {
+        position: absolute;
+        display: block;
+        content: '';
+        background-color: @color-road;
+        width: @road-width;
+        height: @grid-size;
+        transform: rotateZ(90deg);
+        top: 0;
+        left: 0;
+    }
+    
 }
 
 .road.___roundabout:before {
