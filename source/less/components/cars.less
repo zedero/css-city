@@ -4,6 +4,7 @@
     display: block;
     position: absolute;
     animation: cars-spawning 2s linear;
+    //z-index: @z-cars;
 }
 @keyframes cars-spawning {
     0% {
@@ -180,28 +181,28 @@
 @keyframes car-one {
     0% {
         top: (@grid-size/2) - @car-h;
-        left: @grid-size;
+        left: @grid-size - @car-h;
     }
     100% {
         top: (@grid-size/2) - @car-h;
-        left: 0;
+        left: 0- @car-h;
     }
 }
 
 @keyframes car-two {
     0% {
         top: (@grid-size/2);
-        left: 0;
+        left: 0- @car-h;
     }
     100% {
         top: (@grid-size/2);
-        left: @grid-size;
+        left: @grid-size - @car-h;
     }
 }
 
 @keyframes car-three {
     0% {
-        top: 0;
+        top: 0 - @car-h;
         left: (@grid-size/2) - @car-h;
     }
     20% {
@@ -213,14 +214,14 @@
         left: (@grid-size/2) - @car-h;
     }
     100% {
-        top: @grid-size;
+        top: @grid-size - @car-h;
         left: (@grid-size/2) - @car-h;
     }
 }
 
 @keyframes car-four {
     0% {
-        top: @grid-size;
+        top: @grid-size - @car-h;
         left: (@grid-size/2);
     }
     40% {
@@ -232,7 +233,7 @@
         left: (@grid-size/2);
     }
     100% {
-        top: 0;
+        top: 0 - @car-h;
         left: (@grid-size/2);
     }
 }

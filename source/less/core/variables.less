@@ -1,5 +1,20 @@
 // Colors
 // -------------------------------
+@rotate: false;
+@rotate: true;
+
+@selector: false;
+@selector: true;
+
+
+@color-grass:   seagreen;
+@color-grass:   #488214;
+@color-sky:     skyblue;
+@color-road:    #989899;
+@color-ground:  #cac4ae;
+@color-water:   #40a4df;
+
+
 
 @color-primary:                     #123552;
 
@@ -38,6 +53,18 @@
 @color-success:                     #73b62a;
 @color-alert:                       #e17000;
 @color-attention:                   #a90061;
+
+// Container sizes
+@container:                   (100.4rem + @grid-gutter-width);
+
+@grid-size: 20rem;
+@ground-height: @grid-size / 20;
+@ground-offset: @ground-height / 2;
+
+@road-width: 3rem;
+@road-center: ( @grid-size - @road-width ) / 2;
+@plotsize: ( @grid-size - @road-width ) / 2;
+
 
 
 // Fonts
@@ -97,18 +124,19 @@
 
 // Z-indexes
 // -------------------------------
+/** {
+    //z-index: 0 ;
+}
+@z-city:        0;
+@z-grid:        0;
+@z-ground:      0;
+@z-road:        0;
+@z-cars:        0;
+@z-shadow:      0;
+@z-emptyplot:   0;
+@z-plot:        0;
+@z-building:    0;*/
 
-@lift-10:                           1;
-@lift-20:                           2;
-@lift-30:                           3;
-@lift-40:                           4;
-@lift-50:                           5;
-@lift-60:                           6;
-@lift-70:                           7;
-@lift-80:                           8;
-@lift-90:                           9;
-@lift-100:                          10;
-@lift-max:                          9999;
 
 
 // Transitions
@@ -117,36 +145,6 @@
 @trans-fast:                        0.2s ease;
 @trans-normal:                      0.35s ease;
 
-
 // Icons
 // -------------------------------
 
-@icon-angle-down: "\e90e";
-@icon-angle-left: "\e90f";
-@icon-angle-right: "\e910";
-@icon-angle-up: "\e911";
-@icon-arrow-right-circle: "\e900";
-@icon-arrow-right: "\e901";
-@icon-buildingblocks: "\e91b";
-@icon-checkmark-circle: "\e902";
-@icon-chevron-down: "\e903";
-@icon-chevron-left: "\e904";
-@icon-chevron-right: "\e905";
-@icon-chevron-up: "\e906";
-@icon-cross: "\e907";
-@icon-download: "\e908";
-@icon-envelope: "\e909";
-@icon-help: "\e90a";
-@icon-icon-circle-right: "\e90b";
-@icon-question-mark: "\e90c";
-@icon-search: "\e90d";
-@icon-graphic-layer: "\e912";
-@icon-graphic-layers-2: "\e913";
-@icon-graphic-layers-3: "\e914";
-@icon-graphic-layers-4-plus: "\e915";
-@icon-map: "\e91c";
-@icon-mobile-menu: "\e916";
-@icon-hat: "\e917";
-@icon-grid: "\e918";
-@icon-monitor: "\e919";
-@icon-layers: "\e91a";

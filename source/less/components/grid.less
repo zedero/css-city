@@ -1,3 +1,10 @@
+.plot {
+    //z-index: @z-plot;
+}
+.shadow-plot {
+    //z-index: @z-shadow;
+}
+
 @plotoffset: ( (@grid-size / 2) + (@road-width /2 ) );
 .shadow-plot-1,
 .plot-1 {
@@ -39,6 +46,7 @@
             width: @plotsize;
             border: 1px dashed red;
             position: absolute;
+            z-index: -1;
 
         }
         &:hover *:before,
