@@ -6,35 +6,124 @@ append variables
 append main
     .skybox
         .cloud
-        .viewport
-            .city
-                .ground._1-1
-                .road._1-1
-                .cars._1-1
-                    .car.__one.__red
-                    .car.__two.__blue
-                    .car.__three.__cab
-                    .car.__four.__grey
-                .shadows._1-1
-                    .shadow-plot-1
-                        +brickflat-shadow
-                    .shadow-plot-2
-                        +brickflat-shadow
-                    .shadow-plot-3
-                        +brickflat-shadow
-                    .shadow-plot-4
-                        +brickflat-shadow
-                .plots._1-1
-                    .plot.plot-1
-                        +brickflat
-                    .plot.plot-2
-                        +brickflat
-                    .plot.plot-3
-                        +brickflat
-                    .plot.plot-4
-                        +brickflat
-                
-                    
+    .viewport
+        .city
+            //- Ground layer
+            .ground._1-1
+            .ground._1-2
+            .sea.___right._1-3
+                .seafloor
+                .seawater
+            .ground._2-1
+            .ground._2-2
+            .sea.___right._2-3
+                .seafloor
+                .seawater
+            .sea.___bottom._3-1
+                .seafloor
+                .seawater
+            .sea.___bottom._3-2
+                .seafloor
+                .seawater
+            .sea.___bottom.___right._3-3
+                .seafloor
+                .seawater
+
+            //- Road layer
+            .roads._1-1
+                .road
+            .roads._1-2
+                .road
+            .roads._2-1
+                .road
+            .roads._2-2
+                .road
+
+            //- Traffic layer
+            .cars._1-1
+                .car.__one.__red
+                .car.__two.__blue
+                .car.__three.__cab
+                .car.__four.__grey
+            .cars._1-2
+                .car.__one.__red
+                .car.__two.__blue
+                .car.__three.__green
+                .car.__four.__police
+            .cars._2-1
+                .car.__one.__darkpink
+                .car.__two.__blue
+                .car.__three.__cab
+                .car.__four.__grey
+            .cars._2-2
+                .car.__one.__darkpink
+                .car.__two.__blue
+                .car.__three.__green
+                .car.__four.__police
+
+            //- Streetlantern-light layer
+
+            //- Streetlantern layer
+
+            //- Shadow layer
+            .shadows._1-1
+                .shadow-plot-1
+                .shadow-plot-2
+                .shadow-plot-3
+                .shadow-plot-4
+            .shadows._1-2
+                .shadow-plot-1
+                .shadow-plot-2
+                .shadow-plot-3
+                .shadow-plot-4
+            .shadows._2-1
+                .shadow-plot-1
+                .shadow-plot-2
+                .shadow-plot-3
+                .shadow-plot-4
+            .shadows._2-2
+                .shadow-plot-1
+                .shadow-plot-2
+                .shadow-plot-3
+                .shadow-plot-4
+
+            //- Plots layer
+            .plots._1-1
+                .plot.plot-1(data-plot="1" data-shadow-area="_1-1")
+                    .emptyplot
+                .plot.plot-2(data-plot="2" data-shadow-area="_1-1")
+                    .emptyplot
+                .plot.plot-3(data-plot="3" data-shadow-area="_1-1")
+                    .emptyplot
+                .plot.plot-4(data-plot="4" data-shadow-area="_1-1")
+                    .emptyplot
+            .plots._1-2
+                .plot.plot-1(data-plot="1" data-shadow-area="_1-2")
+                    .emptyplot
+                .plot.plot-2(data-plot="2" data-shadow-area="_1-2")
+                    .emptyplot
+                .plot.plot-3(data-plot="3" data-shadow-area="_1-2")
+                    .emptyplot
+                .plot.plot-4(data-plot="4" data-shadow-area="_1-2")
+                    .emptyplot
+            .plots._2-1
+                .plot.plot-1(data-plot="1" data-shadow-area="_2-1")
+                    .emptyplot
+                .plot.plot-2(data-plot="2" data-shadow-area="_2-1")
+                    .emptyplot
+                .plot.plot-3(data-plot="3" data-shadow-area="_2-1")
+                    .emptyplot
+                .plot.plot-4(data-plot="4" data-shadow-area="_2-1")
+                    .emptyplot
+            .plots._2-2
+                .plot.plot-1(data-plot="1" data-shadow-area="_2-2")
+                    .emptyplot
+                .plot.plot-2(data-plot="2" data-shadow-area="_2-2")
+                    .emptyplot
+                .plot.plot-3(data-plot="3" data-shadow-area="_2-2")
+                    .emptyplot
+                .plot.plot-4(data-plot="4" data-shadow-area="_2-2")
+                    .emptyplot
                     
                     
                     

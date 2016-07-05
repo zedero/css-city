@@ -47,7 +47,6 @@
             border: 1px dashed red;
             position: absolute;
             z-index: -1;
-
         }
         &:hover *:before,
         &:hover *:after,
@@ -70,6 +69,12 @@
     left: @grid-size;
 }
 
+._1-3 {
+    position: relative;
+    top: 0;
+    left: @grid-size * 2;
+}
+
 ._2-1 {
     position: relative;
     top: @grid-size;
@@ -80,4 +85,28 @@
     position: relative;
     top: @grid-size;
     left: @grid-size;
+}
+
+._2-3 {
+    position: relative;
+    top: @grid-size;
+    left: @grid-size * 2;
+}
+
+._3-1 {
+    position: relative;
+    top: @grid-size * 2;
+    left: 0;
+}
+
+._3-2 {
+    position: relative;
+    top: @grid-size * 2;
+    left: @grid-size;
+}
+
+._3-3 {
+    position: relative;
+    top: @grid-size * 2;
+    left: @grid-size * 2;
 }
