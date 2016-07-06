@@ -1,62 +1,188 @@
 (function () {
-    
+
     'use strict';
+
+    // Variables
+    //----------------------
+    var $selection;
+    var GLOBAL = {
+        'money':0,
+        'population':0,
+        'maxPopulation':0,
+        'jobs':0,
+        'polution':0,
+        'happiness':0
+    }
     
-    var $selection = $('input[name=buildingselect]:checked');
-    $('.user-interface__buildingselect input').on('change', function() {
-       $selection = $('input[name=buildingselect]:checked');
+    var DEFAULT = {
+        'money':10000,
+        'population':0,
+        'maxPopulation':0,
+        'jobs':0,
+        'polution':0,
+        'happiness':90
+    }
+    
+    /*  Depth of gameplay order:
+        
+        Money
+        Electricity
+        Water
+        Waste
+        Sewage        
+        Education
+        
+    */
+    
+    
+    GLOBAL = DEFAULT;
+    
+    var DATA = {
+        "settings": [
+
+                    ],
+        "buildings": [
+            {
+                "handle": "construction",
+                "name": "construction site",
+                "building": "/buildings/construction.html",
+                "shadow": null,
+                "type": "construction",
+                "buildtime": 0,
+                "price": 0,
+                "holds": 0,
+                "happiness": 0,
+                "polution": 0
+            },
+            {
+                "handle": "brickhouse",
+                "name": "Appartment",
+                "building": "/buildings/brickflat.html",
+                "shadow": "/shadows/brickflat__shadow.html",
+                "type": "residence",
+                "buildtime": 3,
+                "price": 1,
+                "holds": 50,
+                "happiness": 0,
+                "polution": 0
+            },
+            {
+                "handle": "skyscraper",
+                "name": "Skyscraper",
+                "building": "/buildings/skyscraper.html",
+                "shadow": "/shadows/skyscraper__shadow.html",
+                "type": "residence",
+                "buildtime": 3,
+                "price": 10,
+                "holds": 500,
+                "happiness": 0,
+                "polution": 0
+            },
+            {
+                "handle": "fountain",
+                "name": "Fountain",
+                "building": "/decoration/fountain.html",
+                "shadow": null,
+                "type": "decoration",
+                "buildtime": 1,
+                "price": 1,
+                "holds": "n/a",
+                "happiness": 50,
+                "polution": 0
+            }
+                    ]
+    };
+    
+    var constructionsite = getBuildingData('construction'); //'constructionsite'
+    
+    // Init
+    //----------------------
+    generateBuildingList();
+    
+    
+    // Keeps track of the actively selected building to place.
+    $selection = $('input[name=buildingselect]:checked');
+    $('.user-interface__buildingselect input').on('change', function () {
+        $selection = $('input[name=buildingselect]:checked');
     });
-
-
     
-    $('.emptyplot').click(function(){
-        var $this = $(this);
-        var $parent = $this.parent();//(data-plot="1" data-shadow-area="_2_2")
+    // On clicking empty plot it will try to retrieve data to fill the plot with an building
+    $('.emptyplot').click(function () {
+        var data = getBuildingData($selection.val());
+        var $parent = $(this).parent();
         var plot = $parent.data('plot')
         var shadowTarget = '.shadows.' + $parent.data('shadow-area') + ' .shadow-plot-' + plot;
-        console.log(shadowTarget);
-        $this.remove();
-        var building = "";
-        var shadow = "";
+        var $shadowTarget = $(shadowTarget);
         
-        switch($selection.val()) {
-            case 'brickhouse':
-                building =  '<div class="brickflat">' +
-                '<div class="driveway"></div>'+
-                  '<div class="wall">'+
-                    '<div class="windows"></div>'+
-                  '</div>'+
-                  '<div class="wall">'+
-                    '<div class="windows"></div>'+
-                  '</div>'+
-                  '<div class="roof">' +
-                    '<div class="vent"></div>'+
-                    '<div class="vent"></div>'+
-                  '</div>'+
-                '</div>';
-                shadow = "<div class='brickflat__shadow'></div>"
-                break;
-            case 'fountain':
-                building = '<div class="fountain">' + 
-                              '<div class="grass"></div>' + 
-                              '<div class="water">' + 
-                                '<div class="water__effect">' + 
-                                  '<div class="water__splash"></div>' + 
-                                  '<div class="water__splash"></div>' + 
-                                  '<div class="water__splash"></div>' + 
-                                  '<div class="water__splash"></div>' + 
-                                  '<div class="water__splash"></div>' + 
-                                '</div>' + 
-                              '</div>' + 
-                            '</div>';
-                break;
-        } 
-                
+        initBuilding($parent,$shadowTarget,data);
+    });
+
+    //Functions
+    //----------------------
+    function getBuildingData(target) {
+        var jsonObj = null;;
+
+        $.each(DATA.buildings, function (i, $data) {
+            if ($data.handle == target) {
+                jsonObj = $data;
+                return;
+            }
+        });
+
+        return jsonObj;
+    }
+    
+    function generateBuildingList() {
+        var buildingOptionsList = "";
+        var checked = '';
         
-        $(shadowTarget).append(shadow);
+        $.each(DATA.buildings, function (i, $data) { 
+            if(i==0) {
+                checked = ' checked ';
+            }else{
+                checked = '';
+            }
+            
+            buildingOptionsList += '<input name="buildingselect" value="' + $data.handle + '" ' + checked + ' id="buildingselect_' + $data.handle + '" type="radio">';
+            buildingOptionsList += '<label for="buildingselect_' + $data.handle + '">' + $data.name + '</label>';
+        });
         
-        $parent.append(building)
-    })
+        $('.user-interface__buildingselect').append(buildingOptionsList);
+    }
+    
+    function initBuilding($plot,$shadowPlot,data) {
+        
+        // Place placeholder building
+        placeBuilding($plot,$shadowPlot,constructionsite);
+        
+        // after X time place real building and initiate it
+        setTimeout(function(){
+            placeBuilding($plot,$shadowPlot,data);
+        }, data.buildtime*1000);
+        
+        
+    }
+    
+    function placeBuilding($plot,$shadowPlot,data) {
+        if (data !== null) {
+            $plot.addClass('___hidden');
+            $shadowPlot.addClass('___hidden');
+            $plot.empty();
+            if(data.building !== null) {
+                $plot.load(data.building);
+                $plot.data('type',data.handle);
+            }
+            if(data.shadow !== null) {
+                $shadowPlot.load(data.shadow);
+                $shadowPlot.data('type',data.handle);
+            } 
+            setTimeout(function(){
+                $plot.removeClass('___hidden');
+                $shadowPlot.removeClass('___hidden');
+            }, 200);
+        }
+    }
+
+
 
 })();
-

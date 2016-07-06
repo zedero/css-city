@@ -1,0 +1,107 @@
+/***************************************************************/
+/*********************** appartment ***************************/
+/***************************************************************/
+
+.construction {
+    @h: 1rem;
+    @floors: @h - 1rem;
+    @l: @plotsize;
+    @b: @plotsize;
+    @sun: 0rem;
+    @roof-border: .4rem;
+    @c: #966F33;
+    .box-shadow(@x, @y, @index) when (@index > 0) {
+        .box-shadow(@x, @y, @index - 1);
+        box-shadow+: @x*@index @y*@index 0 0 black;
+    }
+    position: absolute;
+    width: @b;
+    height: @l;
+    
+    background-color: @color-sand;
+    top: (@plotsize / 2)-(@l / 2);
+    left: (@plotsize / 2)-(@b / 2);
+    
+    &::before {
+        background-image: @noise;
+        position: absolute;
+        content: '';
+        width: @b;
+        height: @l;
+    }
+    
+    .wall__back._1 {
+        width: @b;
+        height: @h;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: lighten(@c, 5%);
+        transform: skewX(45deg);
+        left: -@h/2;
+        top: -@h;
+    }
+    .wall__back._2 {
+        width: @h ;
+        height: @l;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: darken(@c, 5%);
+        transform: skewY(45deg);
+        left: -@h;
+        top: -@h/2;
+    }
+    .wall__front._1 {
+        width: @b;
+        height: @h;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: lighten(@c, 5%);
+        transform: skewX(45deg);
+        left: -@h/2;
+        top: @l - @h;
+    }
+    .wall__front._2 {
+        width: @h ;
+        height: @l;
+        position: absolute;
+        display: block;
+        content: ' ';
+        background-color: darken(@c, 5%);
+        transform: skewY(45deg);
+        left: @b - @h;
+        top: -@h/2;
+    }
+    
+    .crane {
+        display: none;
+        position: absolute;
+        left: 3rem;
+        top: -2rem;
+        .body {
+            position: absolute;
+            background-color: black;
+            width: .25rem;
+            height: 4rem;
+            transform: skewX(45deg);
+        }
+        
+        .arm {
+           position: absolute; display: block;
+            background-color: black;
+            width: .25rem;
+            height: 3rem; 
+            top: 1.25rem;
+            left: -1rem;
+            
+        }
+    }
+    
+    
+    
+    &__shadow {
+        
+    }
+}

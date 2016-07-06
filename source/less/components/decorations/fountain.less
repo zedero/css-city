@@ -26,6 +26,19 @@
         left: .75rem;
         position: relative;
     }
+    
+    .water.___disabled {
+        background-color: @color-grey--60;
+        border: .5rem solid @color-grey--60;
+        box-shadow: inset @d @d 0rem 0rem @color-grey--80;
+        
+        .water__splash {
+            animation: none;
+        }
+        .water__splash {
+            background-color: @color-grey--80;
+        }
+    }
     .water__splash {
         position: absolute;
         background-color: lighten(@color-water,30%);
@@ -77,7 +90,7 @@
         position: absolute;
         width: @plotsize;
         height: @plotsize;
-        background-color: @color-grass;
+        //background-color: @color-grass;
         top: -(@plotsize - @l)/2;
         left: -(@plotsize - @b)/2;
     }

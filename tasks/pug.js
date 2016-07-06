@@ -8,7 +8,7 @@ import pug from 'gulp-pug';
 
 export default () => {
 
-    return gulp.src( './' + config.paths.source + '/pug/*.pug' )
+    return gulp.src( './' + config.paths.source + '/pug/**/*.pug' )
         // .pipe(notify({ icon: false, onLast: false, title: 'Processing pug', message: 'Started processing changes in pug' }))
         .pipe(pug({
             pretty: true,

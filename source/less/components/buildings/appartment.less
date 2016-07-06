@@ -3,15 +3,15 @@
 /***************************************************************/
 
 .appartment {
-    @h: 15rem;
+    @h: 11rem;
     @floors: @h - 1rem;
     @l: 6rem;
     @b: 6rem;
     @sun: 0rem;
     @roof-border:.4rem;
     @c: #7da1bf;
-    @c: #46837C;
-    @c: #deb887;
+    //@c: #46837C;
+    //@c: #deb887;
     
     .box-shadow(@x, @y, @index) when (@index > 0) {
         .box-shadow(@x, @y, @index - 1);
@@ -29,9 +29,17 @@
         position: absolute;
         width: @plotsize;
         height: @plotsize;
-        background-color: @color-grass;
+        //background-color: @color-grass;
         top: -(@plotsize - @l)/2;
         left: -(@plotsize - @b)/2;
+    }
+    .grass:after {
+        content: '';
+        position: absolute;
+        width: @plotsize;
+        height: @plotsize;
+        background-image: @noise;
+        opacity: .4;
     }
     .wall{
         width: @b;

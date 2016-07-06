@@ -1,5 +1,12 @@
 .plot {
-    //z-index: @z-plot;
+    transition: .5s opacity;
+    &:not('___hidden'){
+        opacity: 1;
+    }
+    &.___hidden {
+        transition: 0s opacity;
+        opacity: 0;
+    }
 }
 .shadow-plot {
     //z-index: @z-shadow;
@@ -32,6 +39,14 @@
 .shadow-plot-3,
 .shadow-plot-4{
     //z-index: 980;
+    transition: .5s opacity;
+    &:not('___hidden'){
+        opacity: 1;
+    }
+    &.___hidden {
+        transition: 0s opacity;
+        opacity: 0;
+    }
 }
 & when (@selector = true) {
     .plot-1,
