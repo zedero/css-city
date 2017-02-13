@@ -18,6 +18,7 @@
         'jobs': 0,
         'polution': 0,
         'happiness': 0,
+        'happinessNoPower': 0,
         'birthRate': 9, //out of 1000 people / year
         'mortalityRate': 7, //out of 1000 people / year
         'wealth': 1,
@@ -35,6 +36,7 @@
         'jobs': 0,
         'polution': 0,
         'happiness': 75,
+        'happinessNoPower': 0,
         'birthRate': 9, //out of 1000 people / year
         'mortalityRate': 7, //out of 1000 people / year
         'wealth': 1, //Income per citizen
@@ -50,7 +52,7 @@
         Waste       
         Sewage        
         Education
-        Building costs
+        Economy balance
     */
 
     var DATA = {
@@ -113,7 +115,7 @@
             {
                 "handle": "coalplant",
                 "name": "Coal plant",
-                "building": "/buildings/construction.html",
+                "building": "assets/images/construction.svg",
                 "shadow": null,
                 "type": "energie",
                 "buildtime": 1,
@@ -260,7 +262,17 @@
                 $shadowPlot.addClass('___hidden');
                 $plot.empty();
                 if (data.building !== null) {
-                    $plot.load(data.building);
+                    
+                    if(data.building.indexOf('.svg') > -1) {
+                        $plot.load(data.building,function(result){
+                            var _data = $plot.html();
+                            $plot.empty(); 
+                            $plot.append('<div class="svgpos"></div>');
+                            $plot.find('.svgpos').append(_data);
+                        })
+                    } else {
+                        $plot.load(data.building);
+                    }
                     $plot.data('type', data.handle);
                 }
                 if (data.shadow !== null) {
@@ -357,15 +369,21 @@
                 }
             }
             this.updateResidence();
+            energieHandler.update();
         }
 
         addResidence(res) {
             this.buildings.push(res);
             this.updateResidence();
+            energieHandler.update();
+        }
+        
+        getResidences() {
+            return this.buildings;
         }
         
         updateResidence() {
-            console.log(GLOBAL.maxPopulation);
+            //console.log(GLOBAL.maxPopulation);
         }
 
         init() {
@@ -423,8 +441,13 @@
         }
         
         update() {
-            console.log(GLOBAL.energieGeneration);
-            console.log(this.getCosts() );
+            var energieRequirement = getTotalFromObjectArr(residenceHandler.getResidences(),'energieRequirement');
+            if(GLOBAL.energieGeneration < energieRequirement) {
+                GLOBAL.happinessNoPower = -50;
+            } else {
+                GLOBAL.happinessNoPower = 0;
+            }
+            
         }
 
 
@@ -432,7 +455,16 @@
             var _this = this;
         }
     }
-
+    
+    function getTotalFromObjectArr(obj,name) {
+        var total = 0;
+        for(var i=0;i <= obj.length-1;i++){
+            total += obj[i].$data[name];
+        }
+        return total;
+    }
+    
+    
     //
     //-----------------------
 
@@ -500,6 +532,7 @@
         }
 
         updateHappiness(delta) {
+            //GLOBAL.happinessNoPower
             var total = GLOBAL.happiness;
             GLOBAL.happiness = total;
         }

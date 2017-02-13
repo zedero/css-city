@@ -7,10 +7,24 @@
         transition: 0s opacity;
         opacity: 0;
     }
+    .svgpos {
+        position: relative;
+        width: @plotsize;
+        height: @plotsize;
+        pointer-events: none;
+    }
+    svg {
+        //height: @grid-size/2;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }
 .shadow-plot {
     //z-index: @z-shadow;
 }
+
+
 
 @plotoffset: ( (@grid-size / 2) + (@road-width /2 ) );
 .shadow-plot-1,
